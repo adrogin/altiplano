@@ -1,0 +1,75 @@
+{
+    "name": "altiplano",
+    "displayName": "ALtiplano",
+    "description": "AL code visualizer",
+    "version": "0.1.0",
+    "publisher": "alexander-drogin",
+    "author": {
+        "name": "Alexander Drogin"
+    },
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/adrogin/altiplano.git"
+    },
+    "bugs": {
+        "url": "https://github.com/adrogin/altiplano/issues"
+    },
+    "icon": "vscode_ext/resources/icon.png",
+    "engines": {
+        "vscode": "^1.75.0"
+    },
+    "categories": [
+        "Formatters"
+    ],
+    "keywords": [
+        "al",
+        "code",
+        "Business Central",
+        "visualizer",
+        "architecture diagram"
+    ],
+    "activationEvents": [
+        "onLanguage:al",
+        "onCommand:altiplano.showDependencyDiagram"
+    ],
+    "main": "./vscode_ext/dist/extension.js",
+    "contributes": {
+        "configuration": {
+            "title": "ALtiplano",
+            "properties": {
+            }
+        },
+        "commands": [
+            {
+                "command": "altiplano.showDependencyDiagram",
+                "title": "AL Altiplano: Show Dependency Diagram"
+            }
+        ]
+    },
+    "scripts": {
+        "build": "node build.js",
+        "build:prod": "node build.js --production",
+        "watch": "node build.js --watch",
+        "pretest": "npm run build",
+        "test": "cross-env NODE_OPTIONS=--experimental-vm-modules mocha",
+        "test:watch": "cross-env NODE_OPTIONS=--experimental-vm-modules mocha --watch",
+        "test:coverage": "cross-env c8 NODE_OPTIONS=--experimental-vm-modules mocha",
+        "vscode:prepublish": "npm run build:prod",
+        "package": "vsce package --no-dependencies",
+        "package:prod": "npm run build:prod && vsce package --no-dependencies",
+        "package:dev": "npm run build && vsce package --no-dependencies --allow-star-activation"
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.75.0",
+        "c8": "^8.0.1",
+        "chai": "^6.2.2",
+        "cross-env": "^10.1.0",
+        "esbuild": "^0.25.12",
+        "mocha": "^11.3.0",
+        "vsce": "^1.25.1"
+    },
+    "dependencies": {
+        "mermaid": "^11.15.0"
+    }
+}

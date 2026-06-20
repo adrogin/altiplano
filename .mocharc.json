@@ -1,0 +1,16 @@
+{
+    "spec": [
+        "tests/**/*.test.mjs"
+    ],
+    "ignore": [
+        "node_modules/**",
+        "**/node_modules/**"
+    ],
+    "timeout": 5000,
+    "exit": true,
+    "ui": "bdd",
+    "reporter": "json",
+    "node-option": [
+        "experimental-vm-modules"
+    ]
+}
