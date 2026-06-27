@@ -67,7 +67,7 @@ class ALDependencyExplorer {
 
         const objectType = objectDef.children[objectTypeIdx];
         type = objectType.children[0]?.symbol?.text;
-        name = objectType.children[2]?.symbol?.text;
+        name = objectType.children[2]?.children[0]?.symbol?.text;
 
         if (!type || !name) {
             throw new Error("Unable to determine object id: missing type or name");
@@ -77,7 +77,7 @@ class ALDependencyExplorer {
     }
 
     #formatObjectIdFromComponents(type, name) {
-        return `${type}:${name}`;
+        return `${type} ${name}`;
     }
 
     #collectReferences(objectTree) {
