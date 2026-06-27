@@ -16,13 +16,10 @@ export function activate(context: vscode.ExtensionContext) {
                 return;
             }
 
-            // if (editor.document.languageId !== 'al') {
-            //     vscode.window.showErrorMessage('The active file is not an AL file.');
-            //     return;
-            // }
-
-        //   const mermaidText = editor.document.getText();
-        //   showPreview(context, mermaidText, editor.document.fileName);
+            if (editor.document.languageId !== 'al') {
+                vscode.window.showErrorMessage('The active file is not an AL file.');
+                return;
+            }
 
             const content = editor.document.getText();
             const explorer = new ALDependencyExplorer();
